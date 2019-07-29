@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs8.10
   stage: dev
-  profile: lnmunhoz # Config your AWS Profile
+  profile: default # Config your AWS Profile
   environment: # Service wide environment variables
     NODE_ENV: production
 
