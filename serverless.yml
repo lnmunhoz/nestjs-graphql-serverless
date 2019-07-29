@@ -1,0 +1,30 @@
+service: nestjs-graphql-serverless
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  profile: lnmunhoz # Config your AWS Profile
+  environment: # Service wide environment variables
+    NODE_ENV: production
+
+plugins:
+  - serverless-offline
+
+package:
+  exclude:
+    - .git/**
+    - src/**
+    - test/**
+    - nodemon.json
+    - README.md
+  excludeDevDependencies: true
+
+functions:
+  index:
+    handler: dist/serverless.handler
+    events:
+      - http:
+          cors: true
+          path: '/{proxy+}'
+          method: any
