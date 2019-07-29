@@ -19,6 +19,14 @@ import { AppResolver } from './app.resolver';
 
         return {
           context: ({ req }) => ({ req }),
+          transformSchema: schema => {
+            if (process.env.NODE_ENV === 'production') {
+              const traceResolvers = require('@lifeomic/graphql-resolvers-xray-tracing');
+              traceResolvers(schema);
+            }
+
+            return schema;
+          },
           playground: true, // Allow playground in production
           introspection: true, // Allow introspection in production
           ...schemaModuleOptions,

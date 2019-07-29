@@ -5,5 +5,4 @@
 
 type Query {
   hello: String!
-  test: String!
 }

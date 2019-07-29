@@ -17,6 +17,16 @@ export async function bootstrap() {
 
 let cachedServer: Server;
 
+if (process.env.NODE_ENV === 'production') {
+  const xray = require('aws-xray-sdk-core');
+  // Allow X-Ray to track execution through API API calls
+  xray.captureAWS(require('aws-sdk'));
+  // Allow X-Ray to track execution through external API calls
+  xray.captureHTTPsGlobal(require('http'));
+  // Allow X-Ray to track execution when Promises are used
+  xray.capturePromise();
+}
+
 export const handler: Handler = (event: any, context: Context) => {
   if (!cachedServer) {
     bootstrap().then(server => {

@@ -23,6 +23,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@lifeomic/graphql-resolvers-xray-tracing": "^3.0.1",
     "@nestjs/common": "^6.0.4",
     "@nestjs/core": "^6.0.4",
     "@nestjs/graphql": "^6.4.2",
@@ -31,7 +32,9 @@
     "@nestjs/websockets": "^6.0.4",
     "apollo-server-express": "^2.7.2",
     "aws-lambda": "^0.1.2",
+    "aws-sdk": "^2.501.0",
     "aws-serverless-express": "^3.3.6",
+    "aws-xray-sdk-core": "^2.3.4",
     "express": "^4.17.1",
     "graphql": "^14.4.2",
     "graphql-tools": "^4.0.5",
