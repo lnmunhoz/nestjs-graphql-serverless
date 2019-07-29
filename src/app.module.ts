@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GqlModuleOptions, GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
-import { AppResolver } from './app.resolver';
+import { AppResolver, AppService } from './app.resolver';
 
 @Module({
   imports: [
@@ -20,7 +20,10 @@ import { AppResolver } from './app.resolver';
         return {
           context: ({ req }) => ({ req }),
           transformSchema: schema => {
-            if (process.env.NODE_ENV === 'production') {
+            if (
+              process.env.NODE_ENV === 'production' &&
+              !process.env.IS_OFFLINE
+            ) {
               const traceResolvers = require('@lifeomic/graphql-resolvers-xray-tracing');
               traceResolvers(schema);
             }
@@ -35,6 +38,6 @@ import { AppResolver } from './app.resolver';
     }),
   ],
   controllers: [AppController],
-  providers: [AppResolver],
+  providers: [AppResolver, AppService],
 })
 export class AppModule {}

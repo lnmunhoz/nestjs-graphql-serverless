@@ -17,7 +17,7 @@ export async function bootstrap() {
 
 let cachedServer: Server;
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' && !process.env.IS_OFFLINE) {
   const xray = require('aws-xray-sdk-core');
   // Allow X-Ray to track execution through API API calls
   xray.captureAWS(require('aws-sdk'));
