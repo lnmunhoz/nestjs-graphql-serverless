@@ -9,7 +9,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/main.js\"",
-    "start:sls": "npm run copyfiles && tsc-watch -p tsconfig.build.json --onSuccess \"sls offline\"",
+    "start:sls": "tsc-watch -p tsconfig.build.json --onSuccess \"sls offline\"",
     "start:debug": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect-brk dist/main.js\"",
     "start:prod": "node dist/main.js",
     "copyfiles": "cp src/schema.gql dist/schema.gql",

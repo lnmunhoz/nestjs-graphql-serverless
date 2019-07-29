@@ -6,4 +6,9 @@ export class AppResolver {
   async hello() {
     return 'world';
   }
+
+  @Query(returns => String)
+  async test() {
+    return 'world';
+  }
 }

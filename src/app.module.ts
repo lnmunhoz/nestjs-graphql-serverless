@@ -10,7 +10,7 @@ import { AppResolver } from './app.resolver';
         const schemaModuleOptions: Partial<GqlModuleOptions> = {};
 
         // If we are in development, we want to generate the schema.graphql
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.NODE_ENV !== 'production' || process.env.IS_OFFLINE) {
           schemaModuleOptions.autoSchemaFile = 'src/schema.gql';
         } else {
           // For production, the file should be generated
