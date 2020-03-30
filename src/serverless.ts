@@ -17,12 +17,11 @@ export async function bootstrap() {
 
 let cachedServer: Server;
 
-export const handler: Handler = (event: any, context: Context) => {
+export const handler: Handler = async (event: any, context: Context) => {
   if (!cachedServer) {
-    bootstrap().then(server => {
-      cachedServer = server;
-      return serverless.proxy(server, event, context);
-    });
+    const server = await bootstrap();
+    cachedServer = server;
+    return serverless.proxy(server, event, context);
   } else {
     return serverless.proxy(cachedServer, event, context);
   }
