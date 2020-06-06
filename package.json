@@ -29,7 +29,7 @@
     "@nestjs/microservices": "^6.0.4",
     "@nestjs/platform-express": "^6.5.3",
     "@nestjs/websockets": "^6.0.4",
-    "apollo-server-express": "^2.7.2",
+    "apollo-server-express": "^2.14.2",
     "aws-lambda": "^1.0.5",
     "aws-serverless-express": "^3.3.6",
     "express": "^4.17.1",
